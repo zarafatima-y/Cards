@@ -1,0 +1,61 @@
+import random 
+def getCardValue():
+    number = random.randint(2,14)
+    return number
+
+def getCardStr(cardValue):
+    if cardValue == 2:
+        return "2"
+    elif cardValue == 3:
+        return "3"
+    elif cardValue == 4:
+        return "4"
+    elif cardValue == 5:
+        return "5"
+    elif cardValue == 6:
+        return "6"
+    elif cardValue == 7:
+        return "7"
+    elif cardValue == 8:
+        return "8"
+    elif cardValue == 9:
+        return "9"
+    elif cardValue == 10:
+        return "T"
+    elif cardValue == 11:
+        return "J"
+    elif cardValue == 12:
+        return "Q"
+    elif cardValue == 13:
+        return "K"
+    elif cardValue == 14:
+        return "A"
+
+def getHLGuess():
+    while True:
+        user_input = input("High or Low [H/L]? ").upper()
+        if user_input in ["H", "L"]:
+            if user_input == "H":
+                return "HIGH"
+            elif user_input == "L":
+                return "LOW"
+        
+def getBetAmount(maximum):
+    while True:
+        user_input = input("Please enter a bet amount: ")
+        if int(user_input) in range(1,maximum+1):
+            return int(user_input)
+        else:
+            continue
+            
+def playerGuessCorrect(card1, card2, betType):
+    if betType == "HIGH" and card1 > card2:
+        return False
+    elif betType == "HIGH" and card1 < card2:
+        return True
+    elif betType == "LOW" and card1 > card2:
+        return True
+    elif betType == "LOW" and card1 < card2:
+        return False
+    elif card1 == card2:
+        return False
